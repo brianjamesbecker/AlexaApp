@@ -10,7 +10,9 @@ var newSessionHandlers = {
       this.emit(':responseReady');
     },
 
-    'Quacksion' : function(){},
+    'Quacksion' : function(){
+      
+    },
 
     'AMAZON.HelpIntent' : function () {
       var message = 'yo money';
