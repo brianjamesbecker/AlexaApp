@@ -10,8 +10,10 @@ var newSessionHandlers = {
       this.emit(':responseReady');
     },
 
+    'Quacksion' : function(){},
+
     'AMAZON.HelpIntent' : function () {
-      var message = 'Sorry, your on your own';
+      var message = 'retard';
       this.response.speak(message).listen(message);
       this.emit(':responseReady');
     },
