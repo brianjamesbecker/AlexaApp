@@ -13,7 +13,11 @@ var newSessionHandlers = {
     'Quacksion' : function(){},
 
     'AMAZON.HelpIntent' : function () {
-      var message = 'im trolling';
+<<<<<<< HEAD
+      var message = 'retard';
+=======
+      var message = 'hello';
+>>>>>>> f9521657ee0d3e765eea1eae9be19ab25a621e72
       this.response.speak(message).listen(message);
       this.emit(':responseReady');
     },
