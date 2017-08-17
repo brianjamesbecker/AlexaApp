@@ -11,7 +11,7 @@ var newSessionHandlers = {
     },
 
     'AMAZON.HelpIntent' : function () {
-      var message = 'Sorry, your on your own';
+      var message = 'hello';
       this.response.speak(message).listen(message);
       this.emit(':responseReady');
     },
