@@ -39,7 +39,7 @@ var newSessionHandlers = {
     }
   };
 
-export.handler = function (event, context) {
+exports.handler = function (event, context) {
   var alexa = Alexa.handler(event, context);
   alexa.registerHandlers(newSessionHandlers);
   alexa.execute();
