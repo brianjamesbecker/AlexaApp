@@ -4,14 +4,20 @@ const Alexa = require('alexa-sdk');
 
 var newSessionHandlers = {
     'LaunchRequest' : function(){
-      var message = 'Hi';
-      var reprompt = 'safdsf';
-      this.response.speak(message).listen(reprompt);
-      this.emit(':responseReady');
-    },
-
-    'Quacksion' : function(){
-      
+      var xmlHttp;
+      xmlHttp=new XMLHttpRequest();
+      var url = "http://numbersapi.com/" + d.getMonth() + "/" + d.getDate() + "/date";
+      xmlHttp.onreadystatechange = function()
+      {
+          if (xmlHttp.readyState==4 && xmlHttp.status==200)
+          {
+              var msg = xmlHttp.responseText;
+          }
+      }
+      xmlHttp.open("GET", url, true);
+      xmlHttp.send(null);
+      msg = xmlHttp.responseText;
+      this.emit(':tell', msg);
     },
 
     'AMAZON.HelpIntent' : function () {
@@ -31,7 +37,6 @@ var newSessionHandlers = {
       this.response.speak(message);
       this.emit('responseReady');
     }
-
   };
 
 export.handler = function (event, context) {
