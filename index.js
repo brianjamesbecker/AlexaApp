@@ -1,23 +1,21 @@
 "use strict";
 
 const Alexa = require('alexa-sdk');
+var http = require('http');
+
 
 var newSessionHandlers = {
     'LaunchRequest' : function(){
-      var xmlHttp;
-      xmlHttp=new XMLHttpRequest();
-      var url = "http://numbersapi.com/" + d.getMonth() + "/" + d.getDate() + "/date";
-      xmlHttp.onreadystatechange = function()
-      {
-          if (xmlHttp.readyState==4 && xmlHttp.status==200)
-          {
-              var msg = xmlHttp.responseText;
-          }
-      }
-      xmlHttp.open("GET", url, true);
-      xmlHttp.send(null);
-      msg = xmlHttp.responseText;
-      this.emit(':tell', msg);
+      var client = http.createClient(80, "google.com");
+      var message = "";
+      request = client.request();
+      request.on('response', function( res ) {
+          res.on('data', function( data ) {
+              message = data.toString();
+          } );
+      } );
+      request.end();
+      this.emit(':tell', message);
     },
 
     'AMAZON.HelpIntent' : function () {
